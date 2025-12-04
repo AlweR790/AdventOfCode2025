@@ -41,8 +41,31 @@
         }
         public static string Part2()
         {
-            // Implement Part 2 logic here
-            return "Part 2 Solution: TBD";
+            long finalSum = 0;
+            foreach (var line in File.ReadAllLines(InputFile))
+            {
+                string best = MaxSubsequence(line, 12);
+                finalSum += long.Parse(best);
+            }
+            return "Part 2 Solution: " + finalSum;
+        }
+        public static string MaxSubsequence(string s, int k)
+        {
+            var stack = new List<char>();
+            int remove = s.Length - k;
+
+            foreach (var c in s)
+            {
+                while (remove > 0 && stack.Count > 0 && stack[^1] < c)
+                {
+                    stack.RemoveAt(stack.Count - 1);
+                    remove--;
+                }
+                stack.Add(c);
+            }
+
+            return new string(stack.Take(k).ToArray());
         }
     }
+
 }
