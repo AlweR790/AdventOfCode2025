@@ -26,6 +26,9 @@
             case "6":
                 AdventOfCode2025.Day6.Run();
                 break;
+            case "7":
+                AdventOfCode2025.Day7.Run();
+                break;
             default:
                 Console.WriteLine("Invalid day selected. Please try again."); break;
         }
